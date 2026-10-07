@@ -1,0 +1,26 @@
+{
+  "name": "api-tareas-mvc",
+  "version": "1.0.0",
+  "description": "API REST con Express y arquitectura MVC para gestión de tareas (Meta 3.1)",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "express",
+    "mvc",
+    "api-rest",
+    "tasks",
+    "es6"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

@@ -1,0 +1,121 @@
+### Colección de Pruebas de la API REST de Tareas (REST Client / Thunder Client)
+### Servidor Base: http://localhost:3000
+
+@baseUrl = http://localhost:3000
+
+### 1. Endpoint Principal / Documentación
+GET {{baseUrl}}/
+Content-Type: application/json
+
+###
+
+### 2. Obtener todas las tareas (JSON por defecto) - HTTP 200
+GET {{baseUrl}}/api/tareas
+Content-Type: application/json
+
+###
+
+### 3. Obtener todas las tareas en formato Texto Plano (Actividad 5) - HTTP 200
+GET {{baseUrl}}/api/tareas?formato=text
+
+###
+
+### 4. Buscar tareas por título parcial (Actividad 4) - HTTP 200
+GET {{baseUrl}}/api/tareas/buscar?q=express
+Content-Type: application/json
+
+###
+
+### 5. Buscar tareas por título sin parámetro "q" (Error 400 Bad Request)
+GET {{baseUrl}}/api/tareas/buscar
+Content-Type: application/json
+
+###
+
+### 6. Obtener tarea por ID existente - HTTP 200
+GET {{baseUrl}}/api/tareas/1
+Content-Type: application/json
+
+###
+
+### 7. Obtener tarea por ID con formato no numérico (Error 400 Bad Request)
+GET {{baseUrl}}/api/tareas/abc
+Content-Type: application/json
+
+###
+
+### 8. Obtener tarea por ID inexistente (Error 404 Not Found)
+GET {{baseUrl}}/api/tareas/999
+Content-Type: application/json
+
+###
+
+### 9. Crear una nueva tarea - HTTP 201 Created
+POST {{baseUrl}}/api/tareas
+Content-Type: application/json
+
+{
+  "titulo": "Estudiar para la evaluación de Web App",
+  "completada": false
+}
+
+###
+
+### 10. Crear tarea sin título (Error 400 Bad Request)
+POST {{baseUrl}}/api/tareas
+Content-Type: application/json
+
+{
+  "completada": false
+}
+
+###
+
+### 11. Actualizar completamente una tarea (PUT) - HTTP 200
+PUT {{baseUrl}}/api/tareas/1
+Content-Type: application/json
+
+{
+  "titulo": "Aprender Express Avanzado y Middleware",
+  "completada": true
+}
+
+###
+
+### 12. Actualizar completamente sin título (Error 400 Bad Request)
+PUT {{baseUrl}}/api/tareas/1
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+###
+
+### 13. Actualizar parcialmente una tarea (PATCH) - HTTP 200
+PATCH {{baseUrl}}/api/tareas/2
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+###
+
+### 14. Actualizar parcialmente con cuerpo vacío (Error 400 Bad Request)
+PATCH {{baseUrl}}/api/tareas/2
+Content-Type: application/json
+
+{}
+
+###
+
+### 15. Eliminar una tarea por ID - HTTP 200
+DELETE {{baseUrl}}/api/tareas/3
+Content-Type: application/json
+
+###
+
+### 16. Eliminar una tarea inexistente (Error 404 Not Found)
+DELETE {{baseUrl}}/api/tareas/999
+Content-Type: application/json
